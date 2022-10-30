@@ -3,6 +3,8 @@ const express = require('express');
 const dotenv = require('dotenv').config();
 const dateFormat = require('dateformat');
 
+var studentRoute = require('./routes/student.route.js');
+
 const app = express();
 
 app.use(function (req, res, next) {
@@ -15,6 +17,8 @@ app.use(bodyParser.urlencoded({
 }));
 
 app.use(bodyParser.json());
+
+app.use('/student',studentRoute);
 
 app.get('/', (req, res) => {
     res.send('Hi! Welcome To Our Project API');

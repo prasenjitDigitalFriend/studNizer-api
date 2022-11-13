@@ -69,18 +69,18 @@ exports.create = (req, res) => {
             data: null
         });
     }
-}
+};
 
-exports.login = (req,res) => {
-    studentModel.login(req.body.username,req.body.password,(err,msg,data)=>{
-        if(err){
+exports.login = (req, res) => {
+    studentModel.login(req.body.username, req.body.password, (err, msg, data) => {
+        if (err) {
             res.json({
                 status: 'ERROR',
                 message: msg,
                 responscode: '500',
                 data: null
             });
-        }else{
+        } else {
             res.json({
                 status: 'OK',
                 message: msg,
@@ -89,4 +89,40 @@ exports.login = (req,res) => {
             });
         }
     })
-}
+};
+
+exports.update = (req, res) => {
+    let dateTime = dateFormat(
+        new Date().toLocaleString('en-us', {
+            timeZone: 'Asia/Calcutta',
+        }),
+        'dd-mm-yyyy H:MM:ss'
+    )
+    if (req.body.username && req.body.mobile && req.body.student_id && req.body.email && req.body.dept && req.body.sem && req.body.year && req.body.college && req.body.university) {
+        studentModel.update(req.body.username, req.body.profile_picture, req.body.mobile, req.body.email, req.body.dept, req.body.sem, req.body.year, req.body.college, req.body.university, dateTime, req.body.student_id, req.body.student_id, (err, msg, data) => {
+            console.log(dateTime);
+            if (err) {
+                res.json({
+                    status: 'ERROR',
+                    message: msg,
+                    responscode: '500',
+                    data: null
+                });
+            } else {
+                res.json({
+                    status: 'OK',
+                    message: msg,
+                    responscode: '200',
+                    data: data
+                });
+            }
+        })
+    } else {
+        res.json({
+            status: 'ERROR',
+            message: 'All Fields Are Required!',
+            responscode: '500',
+            data: null
+        });
+    }
+};

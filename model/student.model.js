@@ -48,8 +48,8 @@ student.mobilecheck = (mobile, result) => {
 };
 
 student.login = (username, password, result) => {
-    let query = ("SELECT mobile,username,password FROM `student` WHERE (mobile = '" + username + "' OR username ='" + username + "' ) AND password = '" + password + "'");
-    sql.query(query,(err,res)=>{
+    let query = "SELECT mobile,username,password FROM `student` WHERE (mobile = '" + username + "' OR username ='" + username + "' ) AND password = '" + password + "'";
+    sql.query(query, (err, res) => {
         if (err) {
             result(true, err.message, null);
             return;
@@ -61,8 +61,27 @@ student.login = (username, password, result) => {
                 result(true, "Login Failed", null);
                 return;
             }
-        } 
+        }
     })
 }
+
+student.update = (username, profilePic, mobile, email, dept, sem, year, college, university, modifiedDate, modifiedBy, studentId, result) => {
+    let query = "UPDATE `student` SET username ='" + username + "', profile_picture = '" + profilePic + "', mobile = '" + mobile + "',email = '" + email + "', dept = '" + dept + "' , sem = " + sem + ", year = " + year + " , college = '" + college + "' , university = '" + university + "' , modified_date = '" + modifiedDate + "' , modified_by =" + modifiedBy + " WHERE student_id=" + studentId;
+
+    sql.query(query, (err, res) => {
+        if (err) {
+            result(true, err.message, null);
+            return;
+        } else {
+            if (res.affectedRows > 0) {
+                result(false, "Student Details Updated Successfully !", null);
+                return;
+            } else {
+                result(true, "Student Details Updating Failed", null);
+                return;
+            }
+        }
+    })
+};
 
 module.exports = student;

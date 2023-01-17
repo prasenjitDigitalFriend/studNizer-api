@@ -48,7 +48,7 @@ student.mobilecheck = (mobile, result) => {
 };
 
 student.login = (username, password, result) => {
-    let query = "SELECT mobile,username,password FROM `student` WHERE (mobile = '" + username + "' OR username ='" + username + "' ) AND password = '" + password + "'";
+    let query = "SELECT mobile,username FROM `student` WHERE (mobile = '" + username + "' OR username ='" + username + "' ) AND password = '" + password + "'";
     sql.query(query, (err, res) => {
         if (err) {
             result(true, err.message, null);

@@ -7,7 +7,7 @@ exports.create = (req, res) => {
             res.json({
                 status: 'ERROR',
                 message: 'Mobile Number Should Be 10 Digits Only',
-                responscode: '500',
+                responsecode: '500',
                 data: null
             });
         } else {
@@ -16,7 +16,7 @@ exports.create = (req, res) => {
                     res.json({
                         status: 'ERROR',
                         message: msgMobile,
-                        responscode: '500',
+                        responsecode: '500',
                         data: dataMobile
                     });
                 } else {
@@ -46,14 +46,14 @@ exports.create = (req, res) => {
                             res.json({
                                 status: 'ERROR',
                                 message: msg,
-                                responscode: '500',
+                                responsecode: '500',
                                 data: null
                             });
                         } else {
                             res.json({
                                 status: 'OK',
                                 message: msg,
-                                responscode: '200',
+                                responsecode: '200',
                                 data: data
                             });
                         }
@@ -65,7 +65,7 @@ exports.create = (req, res) => {
         res.json({
             status: 'ERROR',
             message: 'All Fields Are Required',
-            responscode: '500',
+            responsecode: '500',
             data: null
         });
     }
@@ -77,14 +77,14 @@ exports.login = (req, res) => {
             res.json({
                 status: 'ERROR',
                 message: msg,
-                responscode: '500',
+                responsecode: '500',
                 data: null
             });
         } else {
             res.json({
                 status: 'OK',
                 message: msg,
-                responscode: '200',
+                responsecode: '200',
                 data: data
             });
         }
@@ -105,14 +105,14 @@ exports.update = (req, res) => {
                 res.json({
                     status: 'ERROR',
                     message: msg,
-                    responscode: '500',
+                    responsecode: '500',
                     data: null
                 });
             } else {
                 res.json({
                     status: 'OK',
                     message: msg,
-                    responscode: '200',
+                    responsecode: '200',
                     data: data
                 });
             }
@@ -121,7 +121,7 @@ exports.update = (req, res) => {
         res.json({
             status: 'ERROR',
             message: 'All Fields Are Required!',
-            responscode: '500',
+            responsecode: '500',
             data: null
         });
     }

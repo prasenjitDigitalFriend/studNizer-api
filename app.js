@@ -4,6 +4,7 @@ const dotenv = require('dotenv').config();
 const dateFormat = require('dateformat');
 
 var studentRoute = require('./routes/student.route.js');
+var todoRoute = require('./routes/todo.routes');
 
 const app = express();
 
@@ -20,6 +21,7 @@ app.use(bodyParser.urlencoded({
 app.use(bodyParser.json());
 
 app.use('/student',studentRoute);
+app.use('/todo',todoRoute);
 
 app.get('/', (req, res) => {
     res.send('Hi! Welcome To Our Project API');
